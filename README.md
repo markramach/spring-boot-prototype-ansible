@@ -154,9 +154,9 @@ You should see the following output:
 
 You can verify that the docker container is up and running on the localhost:
 
-	Marks-MacBook-Pro:spring-boot-prototype-ansible mramach$ docker ps
-	CONTAINER ID        IMAGE                                                     COMMAND                CREATED             STATUS              PORTS                    NAMES
-	d721bb041191        markramach/spring-boot-prototype-ansible:1.0.0-SNAPSHOT   "java -jar /spring-b   2 minutes ago       Up 2 minutes        0.0.0.0:8080->8080/tcp   spring-boot-prototype-ansible 
+	Marks-MacBook-Pro:spring-boot-prototype-ansible mramach$ docker ps -a
+	CONTAINER ID        IMAGE                                                                      COMMAND                CREATED             STATUS                     PORTS                    NAMES
+	d721bb041191        markramach/spring-boot-prototype-ansible:1.0.0-SNAPSHOT                    "java -jar /spring-b   4 seconds ago       Up 3 seconds               0.0.0.0:8080->8080/tcp   spring-boot-prototype-ansible  
 
 Once the Spring Boot application is up and running you can execute a HTTP `GET` request on the sample resource. Depending on your docker setup localhost may not work. If you are running on OS X, you may need to use the IP address of the boot2docker VM.
 

@@ -1,0 +1,18 @@
+---
+- hosts: all 
+  tasks:
+   - name: Install docker-py
+     pip:
+       name: 'https://pypi.python.org/packages/source/d/docker-py/docker-py-1.1.0.tar.gz'
+       state: present
+   - name: Start Docker Container
+     docker:
+       name: spring-boot-prototype-ansible
+       image: "{{ dockerImagePrefix }}/{{ projectArtifactId }}:{{ projectVersion }}"
+       pull: always
+       insecure_registry: true
+       state: started
+       ports:
+         - "8080:8080"
+       expose:
+         - 8080
