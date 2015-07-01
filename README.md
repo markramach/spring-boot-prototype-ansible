@@ -1,8 +1,8 @@
 ##spring-boot-prototype-ansible
 
-Turning your Continuous Integration process into a Continuous Deployment Pipeline is easier than you think. Using a tool like [Ansible](http://www.ansible.com/), we can break the deployment process into simple repeatable roles that can handle extremely complex deployment scenarios. We can also integrate this deployment process with Maven to make the entire process of committing, building, testing and deploying into one streamlined delivery pipeline.
+Turning your Continuous Integration process into a Continuous Deployment Pipeline is easier than you think. Using a tool like [Ansible](http://www.ansible.com/), we can break the deployment process into simple repeatable roles that can handle extremely complex deployment scenarios. We can also integrate this deployment process with Maven to make the entire process of committing, building, testing and deploying into one streamline delivery pipeline.
 
-Ansible is a powerful collection of open source modules that allow you to run automation to remotely manage the state of servers. Ansible is agentless, there is no additional software that needs to be installed on a target host.
+Ansible is a powerful collection of open source modules that allow you to remotely manage the state of your servers. Ansible is agentless. There is no additional software that needs to be installed on a target host(s).
 
 This prototype project, much like previous ones, will be constructing a simple [Spring Boot](http://projects.spring.io/spring-boot/) REST service packaged in a [Docker](https://www.docker.com/) container. However, in this case we will leverage a [Maven Ansible Plugin](https://github.com/tmullender/ansible-maven-plugin) to automate the installation of our Docker container on a host.
 
@@ -67,7 +67,7 @@ At this point you should be able to browse [Docker Registry](https://registry.hu
 
 ### Define The Deployment Playbook
 
-The prototype project contains a sample playbook (see src/main/ansible/deploy.yml) to deploy the Docker image we just created. This playbook can deploy the image to any number of hosts that we define in the src/main/ansible/hosts file. For the purposes of this project we are simply going to execute the playbook against the localhost. However, you can define any number of remote hosts and connection details for those hosts using the inventory file. For more information see the Ansible [Invetory](http://docs.ansible.com/intro_inventory.html) documentation.
+This prototype project contains a sample [playbook](https://github.com/markramach/spring-boot-prototype-ansible/blob/master/src/main/ansible/deploy.yml) to deploy the Docker image we just created. This playbook can deploy the image to any number of hosts that we define in the [hosts](https://github.com/markramach/spring-boot-prototype-ansible/blob/master/src/main/ansible/hosts) file. For the purposes of this project we are simply going to execute the playbook against the localhost. However, you can define any number of remote hosts and connection details for those hosts using the inventory file. For more information see the Ansible [Invetory](http://docs.ansible.com/intro_inventory.html) documentation.
 
 	---
 	- hosts: all 
@@ -118,7 +118,7 @@ The hosts file indicates that the only target host for our operation is the loca
 		</configuration>
 	</plugin>
             
-As you can see, we have defined the Ansible inventory and playbook that will be used during the plugin execution. Also, we have defined several variables that will be made available to the playbook. These allows the docker container configuration to be dynamic during the build process.
+As you can see, we have defined the Ansible inventory and playbook that will be used during the plugin execution. Also, we have defined several variables that will be made available to the playbook. These allow the docker container configuration to be dynamic during the build process.
 
 ### Run The Playbook
 
